@@ -1,22 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfahior2p7kff"]
+[gd_scene load_steps=5 format=3 uid="uid://dfahior2p7kff"]
 
 [ext_resource type="Script" path="res://scripts/PlayerMovement.gd" id="1_ju2kh"]
-[ext_resource type="Texture2D" uid="uid://d3fh3c3ynwtsf" path="res://sprites/hero.png" id="2_hfpdn"]
+[ext_resource type="PackedScene" uid="uid://de6sumvjs6hrj" path="res://wall.tscn" id="2_gyh2f"]
+[ext_resource type="Texture2D" path="res://sprites/hero.png" id="2_hfpdn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fxua3"]
-size = Vector2(285, 42)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v22f0"]
+radius = 9.41226
+height = 21.6536
 
-[node name="Player" type="Node2D"]
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-scale = Vector2(1.00741, 1.01634)
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(2.77553, 2.8)
 script = ExtResource("1_ju2kh")
+bullet = ExtResource("2_gyh2f")
 
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(3, 5)
+position = Vector2(-0.142029, 0.827248)
+scale = Vector2(1.03353, 1.02259)
 texture = ExtResource("2_hfpdn")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(1, 4)
-shape = SubResource("RectangleShape2D_fxua3")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.40598e-07)
+scale = Vector2(1.03353, 1.02259)
+shape = SubResource("CapsuleShape2D_v22f0")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-3.24262, -4.28571)
+scale = Vector2(1.00833, 1)
