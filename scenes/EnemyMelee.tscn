@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cofgiup7bl6m7"]
+
+[ext_resource type="Texture2D" uid="uid://rst4ltg5viou" path="res://icon.svg" id="1_v6fv0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb4sb"]
+size = Vector2(101.042, 101.736)
+
+[node name="EnemyMelee" type="CharacterBody2D"]
+scale = Vector2(1.2, 1.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.66667, 0)
+scale = Vector2(0.951563, 0.951563)
+texture = ExtResource("1_v6fv0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.45833, -0.208337)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_sb4sb")
