@@ -2,11 +2,20 @@ extends CharacterBody2D
 
 @export var speed = 300
 @export var bullet: PackedScene
+@export var attack_range = 500
+var idle_moving_time = 1.5
+var attack_moving_time = 3
 var can_choot = true
 var bullet_speed = 20
 var shoot_delay = 1
 var time_since_shoot = 0
 @onready var player = get_parent().get_node("Player")
+
+func _ready():
+	pass	
+	
+func _process(delta):
+	pass
 
 func _physics_process(delta):
 	time_since_shoot += delta
