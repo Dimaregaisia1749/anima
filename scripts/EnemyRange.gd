@@ -25,9 +25,9 @@ func _physics_process(delta):
 
 func shoot():
 	var bullet_instance = bullet.instantiate()
-	var player_position = get_global_position()
-	var mouse_position = player.get_meta("Position")
-	var degrees = atan2(mouse_position.y - player_position.y, mouse_position.x - player_position.x)
+	var enemy_position = get_global_position()
+	var player_position = player.get_meta("Position")
+	var degrees = atan2(player_position.y - enemy_position.y, player_position.x - enemy_position.x)
 	bullet_instance.position = get_global_position()
 	bullet_instance.rotation_degrees = rotation_degrees
 	var vel = Vector2(bullet_speed, 0).rotated(degrees) * bullet_speed
