@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var player = get_parent().get_node("Player")
 @export var attack_range = 400
 var damage: int = 1
+var health = 5
 var idle_moving_time = 0.7
 var attack_delay = 1.5
 var hitbox_cooldown = 0.5
@@ -20,20 +21,21 @@ func _ready():
 
 func _process(delta):	
 	time_since_attack += delta
-	var player_pos = player.get_meta("Position")
-	var overlapping_bodies = $AtackRange.get_overlapping_bodies()
-	if time_since_attack >= attack_delay and player in overlapping_bodies:
-		time_since_attack = 0
-		await attack(damage)
+	if is_instance_valid(player):
+		var player_pos = player.get_meta("Position")
+		var overlapping_bodies = $AtackRange.get_overlapping_bodies()
+		if time_since_attack >= attack_delay and player in overlapping_bodies:
+			time_since_attack = 0
+			await attack(damage)
 	
-	if not is_degree_determined:
-		await determine_random_degree()
+		if not is_degree_determined:
+			await determine_random_degree()
 		
-	if self.global_position.distance_to(player_pos) >= attack_range:
-		await idle_moving()	
-	else:
-		await attack_moving()
-	move_and_slide()
+		if self.global_position.distance_to(player_pos) >= attack_range:
+			await idle_moving()	
+		else:
+			await attack_moving()
+		move_and_slide()
 	
 func attack(damage):
 	var player_position = player.get_meta("Position")
@@ -55,14 +57,19 @@ func determine_random_degree():
 	rand_degree = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	await get_tree().create_timer(idle_moving_time).timeout
 	is_degree_determined = false
-
-
-
+	
 func attack_moving():
 	var player_position = player.get_meta("Position")
 	var degrees = atan2(player_position.y - global_position.y, player_position.x - global_position.x)
 	velocity = Vector2(speed, 0).rotated(degrees) * speed
 
+func death():
+	queue_free()
 
 func _on_atack_range_area_entered(area):
-	time_since_attack = 0
+	if is_instance_valid(player):
+		time_since_attack = 0
+		if area.name == "PlayerBulletArea2D":
+			health -= 0.5
+		if health <= 0:
+			death()
