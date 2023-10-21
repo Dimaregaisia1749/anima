@@ -38,11 +38,12 @@ func shoot():
 
 func death():
 	queue_free()
+	
 
 func _on_area_2d_area_entered(area):
-	print(area.name)
 	if is_instance_valid(area):
 		if area.name == "EnemyBulletArea2D" or area.name == "Weapon":
+			print(health)
 			health -= 0.5
 		if health <= 0:
 			death()

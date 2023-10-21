@@ -32,8 +32,8 @@ shape = SubResource("RectangleShape2D_sb4sb")
 position = Vector2(159.792, -1.66667)
 shape = SubResource("RectangleShape2D_6iqi6")
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapon/CollisionShape2D"]
-position = Vector2(1.87498, 1.66667)
+[node name="Sprite2D" type="Sprite2D" parent="Weapon"]
+position = Vector2(161.667, 0)
 scale = Vector2(1.35912, 0.352951)
 texture = ExtResource("1_v6fv0")
 
