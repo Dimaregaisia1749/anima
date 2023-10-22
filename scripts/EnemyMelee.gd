@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 @onready var weapon: Area2D = get_node("Weapon")
-@onready var weapon_sprite = get_node("Weapon/Sprite2D")
+@onready var weapon_sprite = get_node("Weapon/AnimatedSprite2D")
 @onready var weapon_collision_shape = get_node("Weapon/CollisionShape2D")
 @onready var player = get_parent().get_node("Player")
 @onready var original_collision_layer = weapon.collision_layer
 @onready var original_collision_mask = weapon.collision_mask
 @export var attack_range = 400
+@onready var animation = get_node("Weapon/AnimationPlayer")
 var damage: int = 1
 var health = 5
 var idle_moving_time = 0.7
@@ -50,6 +51,7 @@ func attack():
 	weapon.look_at(player.position)
 	await get_tree().create_timer(attack_prepare_delay).timeout
 	weapon_sprite.visible = true
+	animation.play("attack")
 	enableCollider()
 	await get_tree().create_timer(hitbox_cooldown).timeout
 	disableCollider()
@@ -84,11 +86,12 @@ func attack_moving(delta):
 func death():
 	queue_free()
 
-func _on_atack_range_area_entered(area):
+func _on_hitbox_area_entered(area):
 	if is_instance_valid(player):
 		if area.name == "Player":
 			time_since_attack = 0
 		if area.name == "PlayerBulletArea2D":
+			area.get_parent().queue_free()
 			health -= 0.5
 		if health <= 0:
 			death()

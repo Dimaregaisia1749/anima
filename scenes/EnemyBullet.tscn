@@ -1,13 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8twlm84fb24g"]
+[gd_scene load_steps=5 format=3 uid="uid://dy4munndgslp2"]
 
 [ext_resource type="Script" path="res://scripts/Bullet.gd" id="1_b2qek"]
-[ext_resource type="Texture2D" uid="uid://rst4ltg5viou" path="res://icon.svg" id="2_y60hu"]
+[ext_resource type="Texture2D" uid="uid://drehkn1xcdpfr" path="res://sprites/bullet.png" id="2_6qcis"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wy333"]
-size = Vector2(127, 124)
+size = Vector2(127, 87.4995)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jiho3"]
-size = Vector2(124.999, 124.999)
+size = Vector2(124.999, 87.4995)
 
 [node name="bullet" type="CharacterBody2D"]
 scale = Vector2(0.160001, 0.160001)
@@ -16,14 +16,18 @@ collision_mask = 0
 script = ExtResource("1_b2qek")
 
 [node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+texture_filter = 1
 position = Vector2(1, 0)
-texture = ExtResource("2_y60hu")
+scale = Vector2(10.405, 10.405)
+texture = ExtResource("2_6qcis")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7.45053e-07)
 shape = SubResource("RectangleShape2D_wy333")
 
 [node name="EnemyBulletArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBulletArea2D"]
-position = Vector2(2.98021e-06, -2.98021e-06)
+position = Vector2(2.98021e-06, 7.45053e-07)
 shape = SubResource("RectangleShape2D_jiho3")

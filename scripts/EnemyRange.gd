@@ -23,7 +23,8 @@ func _process(delta):
 	if player != null:
 		time_since_attack += delta
 		time_since_change_vel += delta
-		var player_pos = player.get_meta("Position")
+		
+		look_at(player.position)
 		var overlapping_bodies = $AtackRange.get_overlapping_bodies()
 		if time_since_attack >= attack_delay and player in overlapping_bodies:
 			await shoot()
@@ -59,6 +60,7 @@ func death():
 func _on_area_2d_area_entered(area):
 	if is_instance_valid(player):
 		if area.name == "PlayerBulletArea2D":
+			area.get_parent().queue_free()
 			health -= 0.5
 		if health <= 0:
 			death()
