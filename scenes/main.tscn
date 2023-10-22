@@ -8,6 +8,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_525fw")]
+speed = 300
 
 [node name="EnemyRange" parent="." instance=ExtResource("2_ngs7h")]
 position = Vector2(-359, -122)
