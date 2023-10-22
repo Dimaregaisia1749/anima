@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://0qimpye8sq8b"]
+
+[ext_resource type="Script" path="res://scripts/EnemyRange.gd" id="1_vlo3v"]
+[ext_resource type="PackedScene" uid="uid://dy4munndgslp2" path="res://scenes/EnemyBullet.tscn" id="2_jdg27"]
+[ext_resource type="Texture2D" uid="uid://crr1de8yyk88i" path="res://sprites/eye_enemy.png" id="3_1vi6n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb4sb"]
+size = Vector2(101.042, 91.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mwnl"]
+size = Vector2(120.833, 110)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvhvd"]
+radius = 320.851
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yb2tr"]
+radius = 551.718
+
+[node name="EnemyRange" type="CharacterBody2D"]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_vlo3v")
+bullet = ExtResource("2_jdg27")
+attack_range = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1.66667, 0)
+scale = Vector2(5.487, 5.487)
+texture = ExtResource("3_1vi6n")
+flip_h = true
+
+[node name="EnemyHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-1.45833, -1.39077e-06)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_sb4sb")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1.25, 3.97364e-07)
+shape = SubResource("RectangleShape2D_5mwnl")
+
+[node name="RangeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+position = Vector2(0, -1.66667)
+shape = SubResource("CircleShape2D_qvhvd")
+
+[node name="AtackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AtackRange"]
+shape = SubResource("CircleShape2D_yb2tr")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_area_2d_area_entered"]

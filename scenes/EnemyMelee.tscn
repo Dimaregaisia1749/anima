@@ -1,0 +1,129 @@
+[gd_scene load_steps=16 format=3 uid="uid://d0dxl2bq43dam"]
+
+[ext_resource type="Script" path="res://scripts/EnemyMelee.gd" id="1_g0smo"]
+[ext_resource type="Texture2D" uid="uid://cwu0y1wty3086" path="res://sprites/slime_enemy.png" id="2_2old7"]
+[ext_resource type="Texture2D" uid="uid://chcxtv2u8pjl2" path="res://sprites/tentacles_sheet.png" id="3_dtq8y"]
+[ext_resource type="PackedScene" uid="uid://cffa215oo6n8s" path="res://scenes/SlimeParticles.tscn" id="4_stqua"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb4sb"]
+size = Vector2(101.042, 72.9167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a7jl3"]
+size = Vector2(112.5, 85.8333)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oqv23"]
+radius = 209.253
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iqi6"]
+size = Vector2(185.417, 57.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emelg"]
+atlas = ExtResource("3_dtq8y")
+region = Rect2(0, 0, 26, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81x8y"]
+atlas = ExtResource("3_dtq8y")
+region = Rect2(26, 0, 26, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2gp7"]
+atlas = ExtResource("3_dtq8y")
+region = Rect2(52, 0, 26, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdvpj"]
+atlas = ExtResource("3_dtq8y")
+region = Rect2(78, 0, 26, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y6m5t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emelg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81x8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2gp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdvpj")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 1.0
+}]
+
+[sub_resource type="Animation" id="Animation_hv5ys"]
+resource_name = "attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ngo17"]
+_data = {
+"attack": SubResource("Animation_hv5ys")
+}
+
+[node name="EnemyMelee" type="CharacterBody2D"]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_g0smo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1.66667, 0)
+scale = Vector2(5.03, 5.03)
+texture = ExtResource("2_2old7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.45833, -0.416664)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_sb4sb")
+
+[node name="Hitbox" type="Area2D" parent="."]
+scale = Vector2(1.06667, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1.56249, -0.41667)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_a7jl3")
+
+[node name="AtackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AtackRange"]
+shape = SubResource("CircleShape2D_oqv23")
+
+[node name="Weapon" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Weapon"]
+position = Vector2(93.3574, -1.50063)
+shape = SubResource("RectangleShape2D_6iqi6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapon"]
+texture_filter = 1
+position = Vector2(94.3984, -1.50063)
+scale = Vector2(7.13321, 5.86654)
+sprite_frames = SubResource("SpriteFrames_y6m5t")
+animation = &"attack"
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon"]
+root_node = NodePath("../AnimatedSprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_ngo17")
+}
+
+[node name="SlimeParticles" parent="." instance=ExtResource("4_stqua")]
+show_behind_parent = true
+position = Vector2(-3.33333, 2.5)
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
