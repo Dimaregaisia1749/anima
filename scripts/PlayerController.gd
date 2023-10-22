@@ -6,8 +6,6 @@ var can_choot = true
 var bullet_speed = 20
 var shoot_delay = 0.2
 var time_since_shoot = 0
-@onready var animated = $AnimatedSprite2D
-
 var health = 3
 
 func _ready():
@@ -26,17 +24,6 @@ func _physics_process(delta):
 	var input_direction  = Input.get_vector("left", "right", "up", "down")
 	velocity = input_direction  * speed * delta * 100
 	move_and_slide()
-	
-	if Input.is_action_pressed("right"):
-		animated.play('run')
-		animated.scale.x = 1  
-	elif Input.is_action_pressed("left"):
-		animated.play('run')
-		animated.scale.x = -1 
-	elif Input.is_action_pressed("up") or Input.is_action_pressed("down"):
-		animated.play('run')
-	else:
-		animated.play('idle')
 	
 func shoot():
 	var bullet_instance = bullet.instantiate()
