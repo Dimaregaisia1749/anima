@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfahior2p7kff"]
+[gd_scene load_steps=6 format=3 uid="uid://dfahior2p7kff"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_jw3v8"]
-[ext_resource type="PackedScene" uid="uid://bha70x71wx2ab" path="res://scenes/Bullet.tscn" id="2_erbh4"]
+[ext_resource type="PackedScene" uid="uid://dtsgmtdlncy5j" path="res://scenes/PlayerBullet.tscn" id="2_34tv4"]
 [ext_resource type="Texture2D" uid="uid://d3fh3c3ynwtsf" path="res://sprites/hero.png" id="3_ndko3"]
-[ext_resource type="Texture2D" uid="uid://bcol5d4cxftby" path="res://sprites/hero_sheet.png" id="4_gpmwt"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v22f0"]
 radius = 9.41226
@@ -67,10 +66,15 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_r1hw7"]
+radius = 13.4071
+
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(2.77553, 2.8)
 script = ExtResource("1_jw3v8")
-bullet = ExtResource("2_erbh4")
+bullet = ExtResource("2_34tv4")
+metadata/position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.40598e-07)
@@ -87,3 +91,10 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2aqss")
 animation = &"run"
 frame_progress = 0.908282
+
+[node name="PlayerArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea2D"]
+shape = SubResource("CircleShape2D_r1hw7")
+
+[connection signal="area_entered" from="PlayerArea2D" to="." method="_on_area_2d_area_entered"]

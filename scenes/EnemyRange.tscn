@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxjartifo2fsd"]
+
+[ext_resource type="Script" path="res://scripts/EnemyRange.gd" id="1_vlo3v"]
+[ext_resource type="PackedScene" uid="uid://c8twlm84fb24g" path="res://scenes/EnemyBullet.tscn" id="2_jdg27"]
+[ext_resource type="Texture2D" uid="uid://rst4ltg5viou" path="res://icon.svg" id="2_u1tw0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sb4sb"]
+size = Vector2(101.042, 101.736)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mwnl"]
+size = Vector2(120.833, 121.667)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qvhvd"]
+radius = 320.851
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yb2tr"]
+radius = 551.718
+
+[node name="EnemyRange" type="CharacterBody2D"]
+scale = Vector2(1.2, 1.2)
+script = ExtResource("1_vlo3v")
+bullet = ExtResource("2_jdg27")
+attack_range = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.66667, 0)
+scale = Vector2(0.951563, 0.951563)
+texture = ExtResource("2_u1tw0")
+
+[node name="EnemyHitbox" type="CollisionShape2D" parent="."]
+position = Vector2(-1.45833, -0.208337)
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_sb4sb")
+
+[node name="EnemyArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea2D"]
+position = Vector2(-1.25, -0.83333)
+shape = SubResource("RectangleShape2D_5mwnl")
+
+[node name="RangeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea"]
+position = Vector2(0, -1.66667)
+shape = SubResource("CircleShape2D_qvhvd")
+
+[node name="AtackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AtackRange"]
+shape = SubResource("CircleShape2D_yb2tr")
+
+[connection signal="area_entered" from="EnemyArea2D" to="." method="_on_area_2d_area_entered"]
