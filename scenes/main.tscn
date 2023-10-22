@@ -1,18 +1,24 @@
 [gd_scene load_steps=5 format=3 uid="uid://chattfc4dtgpb"]
 
 [ext_resource type="PackedScene" uid="uid://dfahior2p7kff" path="res://scenes/Player.tscn" id="1_525fw"]
-[ext_resource type="PackedScene" uid="uid://cxjartifo2fsd" path="res://scenes/EnemyRange.tscn" id="2_ngs7h"]
-[ext_resource type="PackedScene" uid="uid://cofgiup7bl6m7" path="res://scenes/EnemyMelee.tscn" id="2_r6ukk"]
-[ext_resource type="PackedScene" uid="uid://na1n4ewih45i" path="res://scenes/CameraMan.tscn" id="4_rcgjq"]
+[ext_resource type="PackedScene" uid="uid://0qimpye8sq8b" path="res://scenes/EnemyRange.tscn" id="2_ngs7h"]
+[ext_resource type="PackedScene" uid="uid://d0dxl2bq43dam" path="res://scenes/EnemyMelee.tscn" id="2_r6ukk"]
+[ext_resource type="PackedScene" path="res://scenes/CameraMan.tscn" id="4_rcgjq"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_525fw")]
 
 [node name="EnemyRange" parent="." instance=ExtResource("2_ngs7h")]
-position = Vector2(-359, -122)
+position = Vector2(-360, -122)
 
 [node name="EnemyMelee" parent="." instance=ExtResource("2_r6ukk")]
 position = Vector2(408, -165)
 
 [node name="CameraMan" parent="." instance=ExtResource("4_rcgjq")]
+
+[node name="EnemyRange2" parent="." instance=ExtResource("2_ngs7h")]
+position = Vector2(492, 241)
+
+[node name="EnemyMelee2" parent="." instance=ExtResource("2_r6ukk")]
+position = Vector2(-37.0001, 249)

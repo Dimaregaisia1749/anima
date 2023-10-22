@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4b4omtcnti7b"
-path="res://.godot/imported/hero_sheet.png-7c6729aa5ce9bf6e4e90798aad1affab.ctex"
+uid="uid://chcxtv2u8pjl2"
+path="res://.godot/imported/tentacles_sheet.png-7576860391e0ccd229d9141df71f4e8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/hero_sheet.png"
-dest_files=["res://.godot/imported/hero_sheet.png-7c6729aa5ce9bf6e4e90798aad1affab.ctex"]
+source_file="res://sprites/tentacles_sheet.png"
+dest_files=["res://.godot/imported/tentacles_sheet.png-7576860391e0ccd229d9141df71f4e8f.ctex"]
 
 [params]
 
