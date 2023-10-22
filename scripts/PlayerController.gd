@@ -6,9 +6,14 @@ var can_choot = true
 var bullet_speed = 20
 var shoot_delay = 0.2
 var time_since_shoot = 0
+var health = 3
+
+func _ready():
+	set_meta("Health", health)
 
 func _process(delta):
 	self.set_meta("Position", get_global_position())
+	#print(health)
 
 func _physics_process(delta):
 	time_since_shoot += delta
@@ -30,3 +35,15 @@ func shoot():
 	var vel = Vector2(bullet_speed, 0).rotated(degrees) * bullet_speed
 	bullet_instance.velocity = vel
 	get_tree().get_root().add_child(bullet_instance)
+
+func death():
+	queue_free()
+	
+
+func _on_area_2d_area_entered(area):
+	if is_instance_valid(area):
+		if area.name == "EnemyBulletArea2D" or area.name == "Weapon":
+			print(health)
+			health -= 0.5
+		if health <= 0:
+			death()
