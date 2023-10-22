@@ -13,9 +13,9 @@ var idle_moving_time = 0.7
 var attack_delay = 1.5
 var hitbox_cooldown = 0.5
 var time_since_attack = 0
-var speed = 10
+var speed = 80 * 100
 var rand_degree
-var attack_prepare_delay = 1.5
+var attack_prepare_delay = 0.5
 var is_degree_determined = false
 var is_attacking = false
 
@@ -32,19 +32,19 @@ func _process(delta):
 		var player_pos = player.get_meta("Position")
 		var overlapping_bodies = $AtackRange.get_overlapping_bodies()
 		if time_since_attack >= attack_delay and player in overlapping_bodies and not is_attacking:
-			await attack(damage)
+			await attack()
 			time_since_attack = 0
 	
 		if not is_degree_determined:
 			await determine_random_degree()
 		
 		if self.global_position.distance_to(player_pos) >= attack_range:
-			await idle_moving()	
+			await idle_moving(delta)	
 		else:
-			await attack_moving()
+			await attack_moving(delta)
 		move_and_slide()
 	
-func attack(damage):
+func attack():
 	is_attacking = true
 	var degrees = atan2(player.position.y - global_position.y, player.position.x - global_position.x)
 	weapon.look_at(player.position)
@@ -66,8 +66,8 @@ func enableCollider():
 	weapon.collision_layer = original_collision_layer
 	weapon.collision_mask = original_collision_mask
 
-func idle_moving():
-	velocity = rand_degree * speed * 10
+func idle_moving(delta):
+	velocity = rand_degree * speed * delta
 
 func determine_random_degree():
 	is_degree_determined = true
@@ -75,11 +75,11 @@ func determine_random_degree():
 	await get_tree().create_timer(idle_moving_time).timeout
 	is_degree_determined = false
 	
-func attack_moving():
+func attack_moving(delta):
 	if player != null:
 		var player_position = player.get_meta("Position")
-		var degrees = atan2(player_position.y - global_position.y, player_position.x - global_position.x)
-		velocity = Vector2(speed, 0).rotated(degrees) * speed
+		var degrees = atan2(player.position.y - global_position.y, player.position.x - global_position.x)
+		velocity = Vector2(1, 0).rotated(degrees) * speed * delta
 
 func death():
 	queue_free()
