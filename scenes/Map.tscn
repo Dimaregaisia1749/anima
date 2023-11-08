@@ -1,0 +1,76 @@
+[gd_scene load_steps=20 format=3 uid="uid://d5pjkaxlnb5t"]
+
+[ext_resource type="Texture2D" uid="uid://cbv3pt035q3cb" path="res://sprites/map_3.png" id="1_n822i"]
+[ext_resource type="Texture2D" uid="uid://cwyexsltojruj" path="res://sprites/map_4.png" id="2_l0oek"]
+[ext_resource type="Texture2D" uid="uid://dubfvlyygk0yi" path="res://sprites/map_5.png" id="3_p8oxs"]
+[ext_resource type="Texture2D" uid="uid://cx8i1v0kx1vqh" path="res://sprites/map_6.png" id="4_xaqfi"]
+[ext_resource type="Texture2D" uid="uid://c3ucfutrkmybv" path="res://sprites/map_7.png" id="5_otbjw"]
+[ext_resource type="Texture2D" uid="uid://c6vyhan3ogiwo" path="res://sprites/map_8.png" id="6_dydb7"]
+[ext_resource type="Texture2D" uid="uid://doimkp3j4otwv" path="res://sprites/map_9.png" id="7_cv7kx"]
+[ext_resource type="Texture2D" uid="uid://b2j0b3y5gf4h2" path="res://sprites/map_1.png" id="7_w300a"]
+[ext_resource type="Texture2D" uid="uid://d2dh6s22ngitk" path="res://sprites/map_2.png" id="8_ro280"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7frb"]
+texture = ExtResource("1_n822i")
+texture_region_size = Vector2i(17, 17)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s6n5n"]
+texture = ExtResource("2_l0oek")
+texture_region_size = Vector2i(17, 17)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qsb14"]
+texture = ExtResource("3_p8oxs")
+texture_region_size = Vector2i(17, 17)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xrl0d"]
+texture = ExtResource("4_xaqfi")
+texture_region_size = Vector2i(17, 17)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y08ui"]
+texture = ExtResource("5_otbjw")
+texture_region_size = Vector2i(17, 17)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2nqy8"]
+texture = ExtResource("6_dydb7")
+texture_region_size = Vector2i(17, 17)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_183e8"]
+texture = ExtResource("7_cv7kx")
+texture_region_size = Vector2i(17, 17)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ywd6t"]
+texture = ExtResource("7_w300a")
+texture_region_size = Vector2i(17, 17)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ig15n"]
+texture = ExtResource("8_ro280")
+texture_region_size = Vector2i(17, 17)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r70ic"]
+tile_size = Vector2i(17, 17)
+sources/8 = SubResource("TileSetAtlasSource_ywd6t")
+sources/9 = SubResource("TileSetAtlasSource_ig15n")
+sources/10 = SubResource("TileSetAtlasSource_i7frb")
+sources/11 = SubResource("TileSetAtlasSource_s6n5n")
+sources/12 = SubResource("TileSetAtlasSource_qsb14")
+sources/13 = SubResource("TileSetAtlasSource_xrl0d")
+sources/14 = SubResource("TileSetAtlasSource_y08ui")
+sources/15 = SubResource("TileSetAtlasSource_2nqy8")
+sources/16 = SubResource("TileSetAtlasSource_183e8")
+
+[node name="Map" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = SubResource("TileSet_r70ic")
+format = 2
+layer_0/tile_data = PackedInt32Array(4, 8, 0, 5, 9, 0, 6, 10, 0, -65530, 11, 0, -131066, 12, 0, -131067, 13, 0, -131068, 14, 0, -65532, 15, 0, -65531, 16, 0, 3, 16, 0, -65533, 16, 0, -131069, 16, 0, -196605, 16, 0, -196606, 16, 0, -131070, 16, 0, -65534, 16, 0, 2, 16, 0, 65538, 16, 0, 65539, 16, 0, 65540, 16, 0, 65541, 16, 0, 65542, 16, 0, 65543, 16, 0, 65544, 16, 0, 7, 16, 0, -65529, 16, 0, -131065, 16, 0, -196601, 16, 0, -196602, 16, 0, -196603, 16, 0, -196604, 16, 0, 8, 16, 0, -65528, 16, 0, -262137, 16, 0, -262136, 16, 0, -196600, 16, 0, -131064, 16, 0, 65545, 16, 0, 9, 16, 0, -65527, 16, 0, -131063, 16, 0, -196599, 16, 0, -262135, 16, 0, -262138, 16, 0, -262139, 16, 0, -262140, 16, 0, -262141, 16, 0, -262142, 16, 0, -262143, 16, 0, -196607, 16, 0, -131071, 16, 0, -65535, 16, 0, 1, 16, 0, 65537, 16, 0, 131073, 16, 0, 131074, 16, 0, 131075, 16, 0, 131076, 16, 0, 131077, 16, 0, 131078, 16, 0, 131079, 16, 0, 131080, 16, 0, 131081, 16, 0)
