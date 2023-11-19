@@ -17,7 +17,7 @@ radius = 320.851
 radius = 551.718
 
 [node name="EnemyRange" type="CharacterBody2D"]
-scale = Vector2(1.2, 1.2)
+scale = Vector2(0.92, 0.92)
 script = ExtResource("1_vlo3v")
 bullet = ExtResource("2_jdg27")
 attack_range = 1
