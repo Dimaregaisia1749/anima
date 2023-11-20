@@ -75,7 +75,7 @@ _data = {
 }
 
 [node name="EnemyMelee" type="CharacterBody2D"]
-scale = Vector2(1.2, 1.2)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_g0smo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -94,7 +94,6 @@ scale = Vector2(1.06667, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(-1.56249, -0.41667)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a7jl3")
 
 [node name="AtackRange" type="Area2D" parent="."]
