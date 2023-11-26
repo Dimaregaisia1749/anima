@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed = 300
 @export var bullet: PackedScene
+@export var cobweb: PackedScene
 @onready var animation = $AnimatedSprite2D
 var can_choot = true
 var bullet_speed = 20
@@ -47,13 +48,20 @@ func shoot():
 	get_tree().get_root().add_child(bullet_instance)
 
 func death():
-	queue_free()
+	get_tree().change_scene_to_file('res://scenes/BossRoom.tscn')
 	
+func spawn_cobweb():
+	var cobweb_instance = cobweb.instantiate()
+	cobweb_instance.position = get_global_position()
+	get_tree().get_root().add_child(cobweb_instance)
 
 func _on_area_2d_area_entered(area):
 	if is_instance_valid(area):
-		if area.name == "EnemyBulletArea2D" or area.name == "Weapon":
-			area.get_parent().queue_free()
+		if area.name == "EnemyBulletArea2D" or area.name == "Weapon" or area.name == 'BossBulletArea2D':
+			if area.name != 'Weapon':
+				area.get_parent().queue_free()
 			health -= 0.5
+		if area.name == 'BossBulletArea2D':
+			spawn_cobweb()
 		if health <= 0:
 			death()

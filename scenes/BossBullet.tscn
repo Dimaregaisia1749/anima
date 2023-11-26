@@ -11,6 +11,8 @@ size = Vector2(8.81176, 13.2176)
 
 [node name="BossBullet" type="CharacterBody2D"]
 scale = Vector2(2.695, 2.695)
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_bo68v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,10 +21,10 @@ position = Vector2(2.38419e-07, -1.42109e-14)
 scale = Vector2(2.695, 2.695)
 texture = ExtResource("1_tyjqe")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="BossBulletArea2D" type="Area2D" parent="."]
 scale = Vector2(2.695, 2.695)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossBulletArea2D"]
 position = Vector2(-0.688419, 0.34421)
 scale = Vector2(2.695, 2.695)
 shape = SubResource("RectangleShape2D_ma6p7")

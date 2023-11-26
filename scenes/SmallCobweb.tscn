@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqbs3wuawwkad"]
+
+[ext_resource type="Texture2D" uid="uid://djr6ow4u7k73r" path="res://sprites/small_cobweb.png" id="1_rl8eu"]
+
+[node name="SmallCobweb" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(4.465, 4.465)
+texture = ExtResource("1_rl8eu")

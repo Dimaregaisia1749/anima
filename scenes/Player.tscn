@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfahior2p7kff"]
+[gd_scene load_steps=15 format=3 uid="uid://dfahior2p7kff"]
 
 [ext_resource type="Script" path="res://scripts/PlayerController.gd" id="1_jw3v8"]
 [ext_resource type="PackedScene" uid="uid://brjqwbjhgbi80" path="res://scenes/PlayerBullet.tscn" id="2_34tv4"]
+[ext_resource type="PackedScene" uid="uid://cqbs3wuawwkad" path="res://scenes/SmallCobweb.tscn" id="3_62dxq"]
 [ext_resource type="Texture2D" uid="uid://d3fh3c3ynwtsf" path="res://sprites/hero.png" id="3_ndko3"]
 [ext_resource type="Texture2D" uid="uid://d2mkgtekutp8k" path="res://sprites/hero_sheet_1.png" id="4_ldsfu"]
 
@@ -74,6 +75,7 @@ animations = [{
 scale = Vector2(2.77553, 2.8)
 script = ExtResource("1_jw3v8")
 bullet = ExtResource("2_34tv4")
+cobweb = ExtResource("3_62dxq")
 metadata/position = Vector2(0, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
