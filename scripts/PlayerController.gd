@@ -53,7 +53,7 @@ func death():
 func _on_area_2d_area_entered(area):
 	if is_instance_valid(area):
 		if area.name == "EnemyBulletArea2D" or area.name == "Weapon":
-			print(health)
+			area.get_parent().queue_free()
 			health -= 0.5
 		if health <= 0:
 			death()

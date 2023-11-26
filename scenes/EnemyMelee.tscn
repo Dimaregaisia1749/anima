@@ -113,7 +113,6 @@ position = Vector2(94.3984, -1.50063)
 scale = Vector2(7.13321, 5.86654)
 sprite_frames = SubResource("SpriteFrames_y6m5t")
 animation = &"attack"
-frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon"]
 root_node = NodePath("../AnimatedSprite2D")
