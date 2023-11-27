@@ -1,8 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqbs3wuawwkad"]
+[gd_scene load_steps=4 format=3 uid="uid://cqbs3wuawwkad"]
 
+[ext_resource type="Script" path="res://scripts/SmallCobweb.gd" id="1_kvsqo"]
 [ext_resource type="Texture2D" uid="uid://djr6ow4u7k73r" path="res://sprites/small_cobweb.png" id="1_rl8eu"]
 
-[node name="SmallCobweb" type="Sprite2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5730"]
+radius = 70.0
+
+[node name="CobwebArea2D" type="Area2D"]
+script = ExtResource("1_kvsqo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(4.465, 4.465)
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(4.47059, 4.47059)
 texture = ExtResource("1_rl8eu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_u5730")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

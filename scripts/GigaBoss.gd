@@ -4,6 +4,9 @@ extends CharacterBody2D
 @export var bullet: PackedScene
 @onready var animation = $AnimatedSprite2D
 @onready var player = get_parent().get_node("Player")
+@onready var singletone_node = get_tree().get_root().get_child(0)
+@onready var this_scene = get_parent()
+var upgrade_num = 1.2
 var can_choot = true
 var bullet_speed = 30
 var attack_delay = 3
@@ -11,11 +14,16 @@ var time_since_attack = 0
 
 func _ready():
 	animation.play("idle")
+	if singletone_node.death_count-1 > 0:
+		hp = hp * (singletone_node.death_count-1) * upgrade_num
+		bullet_speed = bullet_speed * (singletone_node.death_count-1) * upgrade_num
+		attack_delay = attack_delay / ((singletone_node.death_count-1) * upgrade_num)
+	print(hp, ' ', bullet_speed, ' ', attack_delay)
 
 func _process(delta):
 	if player != null:
 		time_since_attack += delta
-		print(player.position.x)
+
 		look_at(player.position)
 
 		if time_since_attack >= attack_delay:
@@ -33,7 +41,7 @@ func shoot():
 	bullet_instance.rotation_degrees = rotation_degrees
 	var vel = Vector2(bullet_speed, 0).rotated(degrees) * bullet_speed
 	bullet_instance.velocity = vel
-	get_tree().get_root().add_child(bullet_instance)
+	this_scene.call_deferred("add_child", bullet_instance)
 
 func _on_hitbox_area_entered(area):
 	if is_instance_valid(player):
@@ -49,5 +57,5 @@ func death():
 	queue_free()
 
 func respawn():
-	get_tree().change_scene_to_file('res://scenes/Main.tscn')
-
+	print('yipeeeee')
+	singletone_node.to_main()

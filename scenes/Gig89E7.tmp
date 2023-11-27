@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3fepogtrjwjj"]
+
+[ext_resource type="Script" path="res://scripts/InitScript.gd" id="1_jeaac"]
+[ext_resource type="PackedScene" uid="uid://chattfc4dtgpb" path="res://scenes/Main.tscn" id="2_1d4or"]
+[ext_resource type="PackedScene" uid="uid://dhhthar2y5d4v" path="res://scenes/BossRoom.tscn" id="3_i4hwh"]
+
+[node name="SingletoneNode" type="Node2D"]
+script = ExtResource("1_jeaac")
+main_scene = ExtResource("2_1d4or")
+boss_scene = ExtResource("3_i4hwh")
+
+[node name="BossRoom" parent="." instance=ExtResource("3_i4hwh")]

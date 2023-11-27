@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var bullet: PackedScene
 @export var cobweb: PackedScene
 @onready var animation = $AnimatedSprite2D
+@onready var singletone_node = get_parent().get_parent()
+@onready var this_scene = get_parent()
 var can_choot = true
 var bullet_speed = 20
 var shoot_delay = 0.2
@@ -45,15 +47,23 @@ func shoot():
 	bullet_instance.rotation_degrees = rotation_degrees
 	var vel = Vector2(bullet_speed, 0).rotated(degrees) * bullet_speed
 	bullet_instance.velocity = vel
-	get_tree().get_root().add_child(bullet_instance)
+	this_scene.call_deferred("add_child", bullet_instance)
+
+func final_death():
+	queue_free()
 
 func death():
-	get_tree().change_scene_to_file('res://scenes/BossRoom.tscn')
-	
+	plus_death()
+	if get_parent().name == 'BossRoom':
+		final_death()
+	else:
+		singletone_node.to_boss_room()
+	#get_parent().get_parent().to_boss_room()
+
 func spawn_cobweb():
 	var cobweb_instance = cobweb.instantiate()
 	cobweb_instance.position = get_global_position()
-	get_tree().get_root().add_child(cobweb_instance)
+	this_scene.call_deferred("add_child", cobweb_instance)
 
 func _on_area_2d_area_entered(area):
 	if is_instance_valid(area):
@@ -63,5 +73,14 @@ func _on_area_2d_area_entered(area):
 			health -= 0.5
 		if area.name == 'BossBulletArea2D':
 			spawn_cobweb()
+		if area.name == 'CobwebArea2D':
+			speed = speed / 2
 		if health <= 0:
 			death()
+
+func _on_player_area_2d_area_exited(area):
+	if area.name == 'CobwebArea2D':
+		speed = speed * 2
+
+func plus_death():
+	singletone_node.death_count += 1

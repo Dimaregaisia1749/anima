@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="anima"
-run/main_scene="res://scenes/Main.tscn"
+run/main_scene="res://scenes/GigaMain.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [editor]
 
-movie_writer/movie_file="D:/DOWNLOADS/godot_preview.avi"
+movie_writer/movie_file="E:/Godot movies/godot_preview.avi"
 
 [input]
 
