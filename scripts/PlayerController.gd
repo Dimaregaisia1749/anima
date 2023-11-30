@@ -10,7 +10,7 @@ var can_choot = true
 var bullet_speed = 20
 var shoot_delay = 0.2
 var time_since_shoot = 0
-var health = 3
+var health = 6
 
 func _ready():
 	set_meta("Health", health)
@@ -70,7 +70,7 @@ func _on_area_2d_area_entered(area):
 		if area.name == "EnemyBulletArea2D" or area.name == "Weapon" or area.name == 'BossBulletArea2D':
 			if area.name != 'Weapon':
 				area.get_parent().queue_free()
-			health -= 0.5
+			health -= 1
 		if area.name == 'BossBulletArea2D':
 			spawn_cobweb()
 		if area.name == 'CobwebArea2D':

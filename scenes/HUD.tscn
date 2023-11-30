@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq3j8fde5kp0t"]
+
+[ext_resource type="Script" path="res://scripts/HealthHUD.gd" id="1_b1lx3"]
+[ext_resource type="Texture2D" uid="uid://cdf8e6gde3jid" path="res://sprites/hearts.png" id="1_eda00"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cb38d"]
+atlas = ExtResource("1_eda00")
+region = Rect2(5.79252, 2.72795, 10.4369, 9.3465)
+
+[node name="HUD" type="CanvasLayer"]
+scale = Vector2(2.4, 2.4)
+transform = Transform2D(2.4, 0, 0, 2.4, 0, 0)
+script = ExtResource("1_b1lx3")
+
+[node name="ItemList" type="GridContainer" parent="."]
+scale = Vector2(1.48333, 1.48333)
+
+[node name="MarginContainer" type="MarginContainer" parent="ItemList"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ItemList/MarginContainer"]
+custom_minimum_size = Vector2(0.16, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Heart1" type="TextureRect" parent="ItemList/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_cb38d")
+stretch_mode = 4
+
+[node name="Heart2" type="TextureRect" parent="ItemList/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_cb38d")
+stretch_mode = 4
+
+[node name="Heart3" type="TextureRect" parent="ItemList/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_cb38d")
+stretch_mode = 4
+
+[node name="Heart4" type="TextureRect" parent="ItemList/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_cb38d")
+stretch_mode = 4
+
+[node name="Heart5" type="TextureRect" parent="ItemList/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_cb38d")
+stretch_mode = 4
+
+[node name="Heart6" type="TextureRect" parent="ItemList/MarginContainer/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = SubResource("AtlasTexture_cb38d")
+stretch_mode = 4

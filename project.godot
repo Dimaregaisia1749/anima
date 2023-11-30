@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [editor]
 
-movie_writer/movie_file="E:/Godot movies/godot_preview.avi"
+movie_writer/movie_file="D:/DOWNLOADS/godot_preview.avi"
 
 [input]
 
