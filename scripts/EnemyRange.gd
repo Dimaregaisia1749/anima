@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var bullet: PackedScene
 @export var attack_range = 500
+var death_score: int = 200
 var speed = 100 * 100
 var idle_moving_time = 1.5
 var health = 3
@@ -15,6 +16,7 @@ var time_since_change_vel = 0
 var range_to_player = 200
 var move_degree = Vector2(0, 0)
 @onready var player = get_parent().get_node("Player")
+@onready var singletone_node = get_tree().get_root().get_child(0)
 
 func _ready():
 	pass	
@@ -55,6 +57,7 @@ func shoot():
 	get_tree().get_root().add_child(bullet_instance)
 
 func death():
+	singletone_node.score += death_score
 	queue_free()
 
 func _on_area_2d_area_entered(area):

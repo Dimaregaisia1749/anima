@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dfahior2p7kff" path="res://scenes/Player.tscn" id="1_orsdm"]
 [ext_resource type="PackedScene" uid="uid://0qimpye8sq8b" path="res://scenes/EnemyRange.tscn" id="2_qn11j"]
 [ext_resource type="PackedScene" uid="uid://d0dxl2bq43dam" path="res://scenes/EnemyMelee.tscn" id="3_2lq10"]
-[ext_resource type="PackedScene" path="res://scenes/CameraMan.tscn" id="4_tyq2q"]
+[ext_resource type="PackedScene" uid="uid://na1n4ewih45i" path="res://scenes/CameraMan.tscn" id="4_tyq2q"]
 [ext_resource type="PackedScene" uid="uid://d1v82k5qoent5" path="res://scenes/MapGenerator.tscn" id="5_7uixa"]
 
 [node name="Main" type="Node2D"]

@@ -18,7 +18,7 @@ func _ready():
 		hp = hp * (singletone_node.death_count-1) * upgrade_num
 		bullet_speed = bullet_speed * (singletone_node.death_count-1) * upgrade_num
 		attack_delay = attack_delay / ((singletone_node.death_count-1) * upgrade_num)
-	print(hp, ' ', bullet_speed, ' ', attack_delay)
+	#print(hp, ' ', bullet_speed, ' ', attack_delay)
 
 func _process(delta):
 	if player != null:

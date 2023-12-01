@@ -71,3 +71,16 @@ size_flags_horizontal = 2
 size_flags_vertical = 0
 texture = SubResource("AtlasTexture_cb38d")
 stretch_mode = 4
+
+[node name="ScoreText" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 0.31
+anchor_right = 0.414
+anchor_bottom = 0.035
+offset_left = -41.12
+offset_top = 1.0
+offset_right = -1.92804
+offset_bottom = 13.32
+scale = Vector2(1.02214, 1.05472)
+theme_override_font_sizes/font_size = 17
+vertical_alignment = 1

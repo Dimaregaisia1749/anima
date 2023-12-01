@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var original_collision_mask = weapon.collision_mask
 @export var attack_range = 400
 @onready var animation = get_node("Weapon/AnimationPlayer")
+@onready var singletone_node = get_tree().get_root().get_child(0)
+var death_score: int = 100
 var damage: int = 1
 var health = 5
 var idle_moving_time = 0.7
@@ -84,6 +86,7 @@ func attack_moving(delta):
 		velocity = Vector2(1, 0).rotated(degrees) * speed * delta
 
 func death():
+	singletone_node.score += death_score
 	queue_free()
 
 func _on_hitbox_area_entered(area):

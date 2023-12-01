@@ -18,6 +18,7 @@ func _ready():
 func _process(delta):
 	self.set_meta("Position", get_global_position())
 	#print(health)
+	print(singletone_node.score)
 
 func _physics_process(delta):
 	time_since_shoot += delta
