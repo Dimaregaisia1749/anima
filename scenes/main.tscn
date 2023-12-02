@@ -3,25 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://dfahior2p7kff" path="res://scenes/Player.tscn" id="1_orsdm"]
 [ext_resource type="PackedScene" uid="uid://0qimpye8sq8b" path="res://scenes/EnemyRange.tscn" id="2_qn11j"]
 [ext_resource type="PackedScene" uid="uid://d0dxl2bq43dam" path="res://scenes/EnemyMelee.tscn" id="3_2lq10"]
-[ext_resource type="PackedScene" uid="uid://na1n4ewih45i" path="res://scenes/CameraMan.tscn" id="4_tyq2q"]
+[ext_resource type="PackedScene" path="res://scenes/CameraMan.tscn" id="4_tyq2q"]
 [ext_resource type="PackedScene" uid="uid://d1v82k5qoent5" path="res://scenes/MapGenerator.tscn" id="5_7uixa"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_orsdm")]
 
-[node name="EnemyRange" parent="." instance=ExtResource("2_qn11j")]
-position = Vector2(-360, -122)
-
-[node name="EnemyMelee" parent="." instance=ExtResource("3_2lq10")]
-position = Vector2(408, -165)
-
 [node name="CameraMan" parent="." instance=ExtResource("4_tyq2q")]
 
-[node name="EnemyRange2" parent="." instance=ExtResource("2_qn11j")]
-position = Vector2(400, 238)
-
-[node name="EnemyMelee2" parent="." instance=ExtResource("3_2lq10")]
-position = Vector2(-18, 405)
-
 [node name="MapGenerator" parent="." instance=ExtResource("5_7uixa")]
+
+[node name="EnemyMelee" parent="." instance=ExtResource("3_2lq10")]
+position = Vector2(-466, -142)
+
+[node name="EnemyRange" parent="." instance=ExtResource("2_qn11j")]
+position = Vector2(426, 208)
