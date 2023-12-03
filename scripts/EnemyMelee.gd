@@ -3,12 +3,12 @@ extends CharacterBody2D
 @onready var weapon: Area2D = get_node("Weapon")
 @onready var weapon_sprite = get_node("Weapon/AnimatedSprite2D")
 @onready var weapon_collision_shape = get_node("Weapon/CollisionShape2D")
-@onready var player = get_parent().get_node("Player")
 @onready var original_collision_layer = weapon.collision_layer
 @onready var original_collision_mask = weapon.collision_mask
 @export var attack_range = 400
 @onready var animation = get_node("Weapon/AnimationPlayer")
 @onready var singletone_node = get_tree().get_root().get_child(0)
+@onready var player = singletone_node.get_node("Main").get_node("Player")
 var death_score: int = 100
 var damage: int = 1
 var health = 5

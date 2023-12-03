@@ -16,16 +16,16 @@ layer_0/tile_data = PackedInt32Array(-458760, 65536, 1, -393224, 65536, 1, -3276
 
 [node name="EnemyMelee" parent="." instance=ExtResource("2_pyywb")]
 position = Vector2(47.8333, 45.8333)
-scale = Vector2(0.169768, 0.169768)
+scale = Vector2(0.15, 0.15)
 
 [node name="EnemyMelee2" parent="." instance=ExtResource("2_pyywb")]
 position = Vector2(-37, -36.5)
-scale = Vector2(0.169768, 0.169768)
+scale = Vector2(0.15, 0.15)
 
 [node name="EnemyMelee3" parent="." instance=ExtResource("2_pyywb")]
 position = Vector2(-45, 62.3333)
-scale = Vector2(0.169768, 0.169768)
+scale = Vector2(0.15, 0.15)
 
 [node name="EnemyRange" parent="." instance=ExtResource("3_5xb6q")]
 position = Vector2(57.8333, -49.8333)
-scale = Vector2(0.193333, 0.193333)
+scale = Vector2(0.15, 0.15)

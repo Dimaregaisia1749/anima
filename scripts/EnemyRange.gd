@@ -15,8 +15,8 @@ var time_to_change_vel = 0.5
 var time_since_change_vel = 0
 var range_to_player = 200
 var move_degree = Vector2(0, 0)
-@onready var player = get_parent().get_node("Player")
 @onready var singletone_node = get_tree().get_root().get_child(0)
+@onready var player = singletone_node.get_node("Main").get_node("Player")
 
 func _ready():
 	pass	
