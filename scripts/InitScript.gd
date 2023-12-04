@@ -26,6 +26,7 @@ func to_main():
 		#main_scene_instance = scene.instantiate()
 	call_deferred('add_child', main_scene_instance)
 	main_scene_instance = main_scene.instantiate()
+	main_scene_instance.get_node("Player").position = Vector2(0, 0)
 
 func to_boss_room():
 	if has_node('Main'):
